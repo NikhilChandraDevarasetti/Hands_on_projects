@@ -1,0 +1,24 @@
+Market,Region,No_of_Orders,Profit,Sales
+Africa,Western Africa,251,-12901.51,78476.06
+,Southern Africa,85,11768.58,51319.5
+,North Africa,182,21643.08,86698.89
+,Eastern Africa,110,8013.04,44182.6
+,Central Africa,103,15606.3,61689.99
+Asia Pacific,Western Asia,382,-16766.9,124312.24
+,Southern Asia,469,67998.76,351806.6
+,Southeastern Asia,533,20948.84,329751.38
+,Oceania,646,54734.02,408002.98
+,Eastern Asia,414,72805.1,315390.77
+,Central Asia,37,-2649.76,8190.74
+Europe,Western Europe,964,82091.27,656637.14
+,Southern Europe,338,18911.49,215703.93
+,Northern Europe,367,43237.44,252969.09
+,Eastern Europe,241,25050.69,108258.93
+LATAM,South America,496,12377.59,210710.49
+,Central America,930,74679.54,461670.28
+,Caribbean,288,13529.59,116333.05
+USCA,Western US,490,44303.65,251991.83
+,Southern US,255,19991.83,148771.91
+,Eastern US,443,47462.04,264973.98
+,Central US,356,33697.43,170416.31
+,Canada,49,7246.62,26298.81
