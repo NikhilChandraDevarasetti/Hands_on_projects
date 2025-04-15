@@ -64,3 +64,48 @@ Used Tableau, Power BI, Seaborn, and Matplotlib for interactive data visualizati
 
 Integrated Elasticsearch for fuzzy, multi-match, and suggestive NLP-based search in web applications. (3+ years)
 
+Soft Skillset:
+
+Proficient in software development lifecycle, including design, development, testing, and deployment.
+
+Skilled in writing clean, modular, and maintainable code using Python.
+
+Strong debugging and problem-solving skills in real-world AI/ML applications.
+
+Good at designing and testing APIs using FastAPI, Flask, Postman, and Pytest.
+
+Capable of handling multiple priorities in fast-paced, collaborative environments.
+
+Experience integrating ML models with production-grade systems through RESTful APIs.
+
+Comfortable working with agile teams using tools like Jira, Confluence, and Git.
+
+Adept at translating business requirements into scalable machine learning solutions.
+
+Good at documenting models, APIs, and workflows for better team collaboration.
+
+Confident in presenting technical ideas to both technical and non-technical stakeholders.
+
+Focused on delivering high-quality results with attention to detail.
+
+Capable of adapting quickly to new tools, frameworks, and evolving project goals.
+
+Strong understanding of testing strategies to ensure reliable code and reproducible experiments.
+
+Committed to writing testable code with good logging and exception handling practices.
+
+Comfortable leading peer code reviews and suggesting improvements.
+
+Good communicator and collaborator in cross-functional teams involving data scientists, engineers, and business analysts.
+
+Experienced in deploying ML models in real-time and batch environments.
+
+Skilled in optimizing performance of data pipelines and inference systems.
+
+Ability to mentor juniors and support knowledge sharing within teams.
+
+Open to feedback and always looking to improve code quality and delivery timelines.
+
+Good at handling version control and resolving merge conflicts effectively.
+
+Committed to continuous learning and staying updated with latest AI/ML trends.
