@@ -174,3 +174,8 @@ Collaborated with cross-functional teams including product managers, DevOps, and
 Automated model testing and feedback logging systems for deployed LLMs in production environments.
 
 Managed cloud resources and GPU allocations (A100, V100) for distributed training and cost-efficient experimentation.
+
+* Name of Background check vendor: FADV/USAFact
+* BGC order number # 349010219/306483900/4158193/4174349
+* Drug Test completion date/ panel type: 01/30/2025
+* Did the candidate complete the drug screen with favorable results? Yes
