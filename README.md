@@ -109,3 +109,68 @@ Open to feedback and always looking to improve code quality and delivery timelin
 Good at handling version control and resolving merge conflicts effectively.
 
 Committed to continuous learning and staying updated with latest AI/ML trends.
+
+Professional Experience Highlights
+Developed and deployed predictive ML models using PyTorch and TensorFlow for diverse use cases including fraud detection, churn prediction, and document classification.
+
+Built a DeepLabV3+ based semantic segmentation model on Vertex AI for bird sound denoising, achieving a high IoU and F1-score.
+
+Designed and trained a PyTorch model on AWS SageMaker for point-based medical image analysis with 85%+ VHS score accuracy.
+
+Created a Dense Passage Retrieval pipeline using fine-tuned LLaMA2/Mistral models to enhance document retrieval relevance.
+
+Built a custom generative AI pipeline using MusicGen and Mustango models for text-to-music generation tasks on A100 GPUs.
+
+Developed an intelligent document processing system using Azure AI Search and Azure OpenAI for real-time classification and analysis.
+
+Fine-tuned LLMs for text summarization from Electronic Health Records (EHRs), leveraging Hugging Face and GPT-based models.
+
+Built NeoBot, an LLM-powered customer support chatbot with retrieval-augmented generation (RAG) and hybrid semantic search.
+
+Designed a multi-output disease classification system on Vertex AI using EfficientNet-b6 and achieved high F1-score.
+
+Developed a GAN-based model for image super-resolution, significantly improving PSNR and SSIM for blurry inputs.
+
+Deployed an HR Chatbot using RASA integrated with employee portals and mobile applications.
+
+Built an intelligent search engine using Elasticsearch with fuzzy matching, n-gram analysis, and spell-check APIs.
+
+Developed an ML-based lead scoring system for an ed-tech client to prioritize conversions based on user behavior data.
+
+Created a telecom churn prediction model using XGBoost and SMOTE, improving customer retention strategy effectiveness.
+
+Implemented a real-time model monitoring and feedback loop using SageMaker pipelines and Docker containers.
+
+Delivered object detection and organ segmentation solutions using YOLO, U-Net, and custom CNN models in healthcare applications.
+
+Mentored 10+ student teams in deep learning research projects on Alzheimer detection, lung analysis, and satellite data extraction.
+
+Won 1st prize in IEEE-ICETCI competition with a DeepLabV3+ based solution for electrical substation feature extraction from satellite data.
+
+Designed feature engineering pipelines and model training for customer segmentation in financial datasets.
+
+Conducted hyperparameter tuning experiments and ablation studies on NLP models to optimize classification performance.
+
+Built scalable data pipelines using PySpark and Databricks for data ingestion, transformation, and ML preprocessing.
+
+Led API development and testing for ML model endpoints using Flask, FastAPI, and Postman.
+
+Deployed models using Docker, Kubernetes (AKS/GKE), and GitLab CI/CD for continuous delivery.
+
+Used SHAP and interpretability tools to explain model outputs to stakeholders and enhance trust in ML decisions.
+
+Built MLOps workflows with MLflow, Jenkins, and model versioning for tracking experiments and deployments.
+
+Integrated cloud-native services from AWS, GCP, and Azure to build and manage ML infrastructure end-to-end.
+
+Researched cutting-edge generative AI models (e.g., Maxim, Vtoonify) for creative tasks such as style transfer and video generation.
+
+Extracted structured data from documents using YOLOv5 and pytesseract, achieving over 96% recall in classification.
+
+Conducted extensive experiments comparing generative model performance using metrics like CLAP Score, ROUGE, BLEU, and NDCG.
+
+Collaborated with cross-functional teams including product managers, DevOps, and business analysts for project alignment and deployment.
+
+Automated model testing and feedback logging systems for deployed LLMs in production environments.
+
+Managed cloud resources and GPU allocations (A100, V100) for distributed training and cost-efficient experimentation.
