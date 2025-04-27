@@ -179,3 +179,15 @@ Managed cloud resources and GPU allocations (A100, V100) for distributed trainin
 * BGC order number # 349010219/306483900/4158193/4174349
 * Drug Test completion date/ panel type: 01/30/2025
 * Did the candidate complete the drug screen with favorable results? Yes
+
+•	Develop and Deploy Generative AI Models – Design, train, fine-tune, and implement models like GANs, VAEs, and transformer-based models (Llama, BERT) for various applications. 
+•	AI Model Optimization & Transfer Learning – Improve model performance through transfer learning, prompt engineering, and domain-specific fine-tuning. 
+•	Data Processing & Management – Work with structured and unstructured data using Pandas, NumPy, SQL, and big data frameworks like Apache Spark. 
+•	Machine Learning & Statistical Analysis – Build and evaluate ML models, conduct statistical analysis, A/B testing, and define key performance metrics. 
+•	Cloud & ML-Ops Implementation – Deploy, monitor, and manage AI models on AWS, GCP, or Azure using tools like Airflow, MLflow, Launchpad, and Kubeflow. 
+•	AI Ethics & Compliance – Ensure fairness, bias mitigation, and regulatory compliance in AI models while maintaining responsible AI practices. 
+•	Collaboration & Stakeholder Communication – Work with engineers, product teams, and business leaders to align AI models with company goals and present insights effectively. 
+•	Continuous Learning & AI Innovation – Stay updated with advancements in Generative AI, NLP, and deep learning to implement cutting-edge AI solutions.
+
+•	Industry-Specific AI Applications – Apply AI solutions to domain-specific challenges (e.g., Telecommunications) for automation, content generation, and customer experience improvements. 
+•	Model Monitoring & Performance Tracking – Define, measure, and monitor KPIs to assess AI model performance and reliability in production. 
