@@ -1,0 +1,157 @@
+# ===========================================
+# Transformer-based Text Classification (Pure PyTorch)
+# ===========================================
+
+import re, math, torch, torch.nn as nn, numpy as np, pandas as pd
+from torch.utils.data import DataLoader, TensorDataset
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import classification_report, confusion_matrix
+from keras.preprocessing.text import Tokenizer
+from keras.utils import pad_sequences
+
+# ===========================================
+# 1. Data Loading & Cleaning
+# ===========================================
+# Example data (replace with your CSV)
+# df = pd.read_csv("project_sizing.csv")
+data = {
+    "description": [
+        "GL&B original estimate: 35 people sprints.",
+        "Clarity adjustment reduced estimate to 10.45 people sprints.",
+        "Scope reduced for product teams to meet budget.",
+        "New GL&B estimate: 17.5 people sprints."
+    ],
+    "target_sizing": ["Large", "Small", "Medium", "Medium"]
+}
+df = pd.DataFrame(data)
+
+def clean_text(text):
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9\s]', '', text)
+    return text.strip()
+
+df["description"] = df["description"].apply(clean_text)
+
+# ===========================================
+# 2. Tokenization & Label Encoding
+# ===========================================
+tokenizer = Tokenizer(num_words=10000, oov_token="<UNK>")
+tokenizer.fit_on_texts(df["description"])
+X = tokenizer.texts_to_sequences(df["description"])
+X = pad_sequences(X, maxlen=50, padding="post")
+
+le = LabelEncoder()
+y = le.fit_transform(df["target_sizing"])
+num_classes = len(le.classes_)
+print("Classes:", le.classes_)
+
+X_tensor = torch.tensor(X, dtype=torch.long)
+y_tensor = torch.tensor(y, dtype=torch.long)
+dataset = TensorDataset(X_tensor, y_tensor)
+train_loader = DataLoader(dataset, batch_size=4, shuffle=True)
+
+# ===========================================
+# 3. Transformer Encoder Block
+# ===========================================
+class TransformerEncoderBlock(nn.Module):
+    def __init__(self, embed_dim, num_heads, ff_dim, dropout=0.1):
+        super().__init__()
+        self.attn = nn.MultiheadAttention(embed_dim, num_heads, dropout=dropout)
+        self.ff = nn.Sequential(
+            nn.Linear(embed_dim, ff_dim),
+            nn.ReLU(),
+            nn.Linear(ff_dim, embed_dim)
+        )
+        self.ln1 = nn.LayerNorm(embed_dim)
+        self.ln2 = nn.LayerNorm(embed_dim)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, x):
+        attn_out, _ = self.attn(x, x, x)
+        x = self.ln1(x + self.dropout(attn_out))
+        ff_out = self.ff(x)
+        x = self.ln2(x + self.dropout(ff_out))
+        return x
+
+# ===========================================
+# 4. Transformer Classifier
+# ===========================================
+class TransformerClassifier(nn.Module):
+    def __init__(self, vocab_size, embed_dim, num_heads, ff_dim, num_layers, num_classes, max_len=50):
+        super().__init__()
+        self.embed = nn.Embedding(vocab_size, embed_dim)
+        self.pos_encoding = self._pos_encoding(max_len, embed_dim)
+        self.encoders = nn.ModuleList([
+            TransformerEncoderBlock(embed_dim, num_heads, ff_dim) for _ in range(num_layers)
+        ])
+        self.dropout = nn.Dropout(0.2)
+        self.fc = nn.Linear(embed_dim, num_classes)
+
+    def _pos_encoding(self, max_len, embed_dim):
+        pe = torch.zeros(max_len, embed_dim)
+        for pos in range(max_len):
+            for i in range(0, embed_dim, 2):
+                pe[pos, i] = math.sin(pos / (10000 ** ((2 * i) / embed_dim)))
+                if i + 1 < embed_dim:
+                    pe[pos, i + 1] = math.cos(pos / (10000 ** ((2 * i) / embed_dim)))
+        return pe.unsqueeze(0)
+
+    def forward(self, x):
+        seq_len = x.size(1)
+        x = self.embed(x) + self.pos_encoding[:, :seq_len, :].to(x.device)
+        x = x.transpose(0, 1)
+        for layer in self.encoders:
+            x = layer(x)
+        x = x.mean(dim=0)
+        return self.fc(self.dropout(x))
+
+# ===========================================
+# 5. Training
+# ===========================================
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = TransformerClassifier(vocab_size=10000, embed_dim=128, num_heads=4,
+                              ff_dim=256, num_layers=2, num_classes=num_classes).to(device)
+
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
+
+for epoch in range(10):
+    model.train()
+    total_loss = 0
+    for X_batch, y_batch in train_loader:
+        X_batch, y_batch = X_batch.to(device), y_batch.to(device)
+        optimizer.zero_grad()
+        outputs = model(X_batch)
+        loss = criterion(outputs, y_batch)
+        loss.backward()
+        optimizer.step()
+        total_loss += loss.item()
+    print(f"Epoch {epoch+1}: Loss = {total_loss / len(train_loader):.4f}")
+
+# ===========================================
+# 6. Evaluation
+# ===========================================
+model.eval()
+with torch.no_grad():
+    preds = model(X_tensor.to(device)).argmax(dim=1).cpu().numpy()
+
+print("\nClassification Report:")
+print(classification_report(y, preds, target_names=le.classes_))
+print("\nConfusion Matrix:")
+print(confusion_matrix(y, preds))
+
+# ===========================================
+# 7. Inference Function
+# ===========================================
+def predict_description(text):
+    text = clean_text(text)
+    seq = tokenizer.texts_to_sequences([text])
+    seq = pad_sequences(seq, maxlen=50, padding='post')
+    input_tensor = torch.tensor(seq, dtype=torch.long).to(device)
+    model.eval()
+    with torch.no_grad():
+        pred = model(input_tensor).argmax(dim=1).item()
+    return le.inverse_transform([pred])[0]
+
+# Example prediction
+print("\nExample prediction:", predict_description("Scope and sizing reduced to meet epic budget"))
